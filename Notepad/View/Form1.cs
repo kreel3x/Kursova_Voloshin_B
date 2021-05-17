@@ -14,37 +14,19 @@ namespace Notepad
 {
     public partial class Form1 : Form
     {
-        string path;
+
+
         public Form1()
         {
             InitializeComponent();
-            saveFileDialog1.Filter = "Text File(*.txt)|*.txt|Boris Notepad File (*.tnf)|*.tnf";
-
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
-            {
-                return;
-            }
-            string filename = saveFileDialog1.FileName;
-            path = filename;
-            File.WriteAllText(filename, richTextBox1.Text);
-            MessageBox.Show("File Saved!");
+        { 
         }
 
         private void openToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
-            {
-                return;
-            }
-            string filename = openFileDialog1.FileName;
-            path = filename;
-            string fileText = File.ReadAllText(filename);
-            richTextBox1.Text = fileText;
-            MessageBox.Show("File Opened!");
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -70,23 +52,6 @@ namespace Notepad
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (path == null)
-            {
-                if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
-                {
-                    return;
-                }
-                string filename = saveFileDialog1.FileName;
-                path = filename;
-                File.WriteAllText(filename, richTextBox1.Text);
-                MessageBox.Show("File Saved!");
-            }
-            else
-            {
-                File.WriteAllText(path, richTextBox1.Text);
-                MessageBox.Show("File Saved!");
-
-            }
         }
 
 
@@ -169,15 +134,6 @@ namespace Notepad
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            string text = richTextBox1.Text;
-            string[] lines = text.Split('\n');
-
-      
-            label5.Text = text.Length.ToString();
-            
-       
-            label4.Text = lines.Length.ToString();
-
         }
 
         private void statusBarToolStripMenuItem_Click(object sender, EventArgs e)
